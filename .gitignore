@@ -1,0 +1,6 @@
+.cursor
+.superdesign
+.vscode
+.idea
+.astro
+**/node_modules/*

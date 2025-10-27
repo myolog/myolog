@@ -1,0 +1,30 @@
+{
+    "name": "myolog",
+    "version": "1.0.0",
+    "description": "NPM workspace for MyoLog",
+    "private": true,
+    "workspaces": [
+        "blog",
+        "components",
+        "layouts",
+        "markdown",
+        "libs"
+    ],
+    "scripts": {
+        "dev": "npm --prefix blog run dev",
+        "build": "npm --prefix blog run build",
+        "preview": "npm --prefix blog run preview",
+        "deploy": "npm --prefix blog run deploy",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "NJoyShadow",
+    "license": "MIT",
+    "dependencies": {
+        "@tailwindcss/vite": "^4.1.15",
+        "tailwindcss": "^4.1.15"
+    },
+    "devDependencies": {
+        "astro-icon": "^1.1.5"
+    }
+}
