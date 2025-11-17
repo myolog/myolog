@@ -21,11 +21,17 @@
     "author": "NJoyShadow",
     "license": "MIT",
     "dependencies": {
+        "@myolog/components": "file:components",
+		"@myolog/layouts": "file:layouts",
+		"@myolog/libs": "file:libs",
+		"@myolog/markdown": "file:markdown",
         "@tailwindcss/vite": "^4.1.15",
         "motion": "^12.23.24",
         "tailwindcss": "^4.1.15"
     },
     "devDependencies": {
-        "astro-icon": "^1.1.5"
+        "astro-icon": "^1.1.5",
+        "@tailwindcss/typography": "^0.5.19"
+
     }
 }

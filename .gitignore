@@ -4,3 +4,5 @@
 .idea
 .astro
 **/node_modules/*
+
+TODO.md
