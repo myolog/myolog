@@ -1,0 +1,19 @@
+[submodule "blog"]
+	path = blog
+	url = https://github.com/myolog/blog
+
+[submodule "components"]
+	path = components
+	url = https://github.com/myolog/components
+
+[submodule "layouts"]
+	path = layouts
+	url = https://github.com/myolog/layouts
+
+[submodule "libs"]
+	path = libs
+	url = https://github.com/myolog/libs
+
+[submodule "markdown"]
+	path = markdown
+	url = https://github.com/myolog/markdown
