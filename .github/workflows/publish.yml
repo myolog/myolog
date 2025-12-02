@@ -1,0 +1,64 @@
+name: "build astro"
+on:
+  repository_dispatch:
+    types: [update-markdown]
+  push:
+    branches:
+      - master
+
+jobs:
+#    build:
+#        runs-on: ubuntu-latest
+#        steps:
+#            - name: Check out repo
+#              uses: actions/checkout@v4
+#              with:
+#                submodules: recursive
+#                token: ${{ secrets.GITHUB_TOKEN }}
+#            - name: Setup Node
+#              uses: actions/setup-node@v4
+#            - name: Cache node modules
+#              uses: actions/cache@v1
+#              with:
+#                path: node_modules
+#                key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+#                restore-keys: |
+#                    ${{ runner.OS }}-build-
+#                    ${{ runner.OS }}-
+#
+#            - name: Install Dependencies
+#              run: npm install
+#
+#            - name: Build
+#              run: npm run build
+#
+#            - name: Index Pagefind
+#              run: npm run pagefind
+#
+#            - name: compress dist
+#              run: tar -I 'zstd -T0' -cf dist.tar.zst dist/
+#
+#            - name: upload dist
+#              uses: actions/upload-artifact@v4
+#              with:
+#                name: dist
+#                path: dist.tar.zst
+
+    deploy:
+        runs-on: ubuntu-latest
+        permissions:
+          contents: read
+        steps:
+            - name: Check out repo
+              uses: actions/checkout@v4
+              with:
+                submodules: recursive
+                token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Deploy to Cloudflare Pages
+              uses: cloudflare/wrangler-action@v3
+              with:
+                apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+                accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+                workingDirectory: ./blog
+                postCommands: npm run pagefind

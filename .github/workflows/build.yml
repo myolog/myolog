@@ -1,0 +1,33 @@
+name: "build astro"
+on:
+    push:
+        branches:
+          - master
+
+jobs:
+    build:
+        runs-on: "ubuntu-latest"
+        permissions:
+          contents: read
+        steps:
+            - name: Check out repo
+              uses: actions/checkout@v4
+              with:
+                submodules: recursive
+                token: ${{ secrets.GITHUB_TOKEN }}
+            - name: Setup Node
+              uses: actions/setup-node@v4
+            - name: Cache node modules
+              uses: actions/cache@v1
+              with:
+                path: node_modules
+                key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+                restore-keys: |
+                    ${{ runner.OS }}-build-
+                    ${{ runner.OS }}-
+
+            - name: Install Dependencies
+              run: npm install
+
+            - name: Build
+              run: npm run build
